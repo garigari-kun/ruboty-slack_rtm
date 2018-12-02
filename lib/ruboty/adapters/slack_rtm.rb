@@ -106,6 +106,8 @@ module Ruboty
           body = JSON.parse(response.body)
 
           URI.parse(body['url'])
+        rescue URI::InvalidURIError => e
+          raise("#{e.message} Returned response body: #{body}")
         end
       end
 
